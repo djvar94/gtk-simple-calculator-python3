@@ -115,8 +115,10 @@ class Handlers:
     def on_equalsButton_clicked(self, button, data=None):
         expressionField = builder.get_object("expressionField")
         buffer = expressionField.get_buffer()
-        expression = buffer.get_text(start, end)
-
+        start = buffer.get_start_iter()
+        end = buffer.get_end_iter()
+        expression = buffer.get_text(start, end, include_hidden_chars)
+        
         if expression is not None:
             invalid_Expression_Dialog = builder.get_object(
                 "invalid_Expression_Dialog")
