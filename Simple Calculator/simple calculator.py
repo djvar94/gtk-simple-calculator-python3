@@ -121,7 +121,7 @@ class Handlers:
 
         if expression is not (""):
             try:
-                calculation = eval(expression)
+                calculation = str(eval(expression))
                 result = buffer.set_buffer(calculation)
 
             except SyntaxError:
