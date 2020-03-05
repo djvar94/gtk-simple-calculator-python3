@@ -119,7 +119,7 @@ class Handlers:
         end = buffer.get_end_iter()
         expression = buffer.get_text(start, end, False)
 
-        if expression is not None:
+        if expression is not (""):
             invalid_Expression_Dialog = builder.get_object(
                 "invalid_Expression_Dialog")
             invalid_Expression_Dialog.show()
