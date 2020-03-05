@@ -124,7 +124,7 @@ class Handlers:
                 calculation = eval(expression)
                 result = buffer.set_buffer(calculation)
 
-            except ValueError:
+            except SyntaxError:
                 invalid_Expression_Dialog = builder.get_object(
                     "invalid_Expression_Dialog")
                 invalid_Expression_Dialog.show()
