@@ -121,7 +121,8 @@ class Handlers:
 
         if expression is not (""):
             try:
-                eval(expression)
+                calculation = eval(expression)
+                result = buffer.set_buffer(calculation)
 
             except ValueError:
                 invalid_Expression_Dialog = builder.get_object(
