@@ -122,7 +122,7 @@ class Handlers:
         if expression is not (""):
             try:
                 calculation = str(eval(expression))
-                result = buffer.set_buffer(calculation)
+                result = buffer.set_buffer(expression + "=" + calculation)
 
             except SyntaxError:
                 invalid_Expression_Dialog = builder.get_object(
