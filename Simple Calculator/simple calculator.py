@@ -119,6 +119,9 @@ class Handlers:
         end = buffer.get_end_iter()
         expression = buffer.get_text(start, end, False)
 
+        operators = {"+": operator.add, "-": operator.sub, "x": operator.mul,
+                     "÷": operator.truediv, "%": operator.mod}
+
         if expression is not (""):
             try:
                 calculation = str(eval(expression))
