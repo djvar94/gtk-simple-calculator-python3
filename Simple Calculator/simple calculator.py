@@ -120,9 +120,13 @@ class Handlers:
         expression = buffer.get_text(start, end, False)
 
         if expression is not (""):
-            invalid_Expression_Dialog = builder.get_object(
-                "invalid_Expression_Dialog")
-            invalid_Expression_Dialog.show()
+            try:
+                eval(expression)
+
+            except ValueError:
+                invalid_Expression_Dialog = builder.get_object(
+                    "invalid_Expression_Dialog")
+                invalid_Expression_Dialog.show()
 
         else:
             pass
