@@ -117,7 +117,7 @@ class Handlers:
         buffer = expressionField.get_buffer()
         start = buffer.get_start_iter()
         end = buffer.get_end_iter()
-        include_hidden_chars = buffer.get_text(..., )
+        include_hidden_chars = buffer.get_text(..., False)
         expression = buffer.get_text(start, end, include_hidden_chars)
 
         if expression is not None:
