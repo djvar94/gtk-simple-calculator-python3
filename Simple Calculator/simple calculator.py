@@ -119,7 +119,7 @@ class Handlers:
         end = buffer.get_end_iter()
         include_hidden_chars = buffer.get_text(..., False)
         expression = buffer.get_text(start, end, include_hidden_chars)
-        
+
         if expression is not None:
             invalid_Expression_Dialog = builder.get_object(
                 "invalid_Expression_Dialog")
