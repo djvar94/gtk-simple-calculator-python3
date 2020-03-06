@@ -112,6 +112,25 @@ class Handlers:
         finalText = buffer.insert_at_cursor(".")
         expressionField = finalText
 
+    def on_openParenthesisButton_clicked(self, button, data=None):
+        expressionField = builder.get_object("expressionField")
+        buffer = expressionField.get_buffer()
+        finalText = buffer.insert_at_cursor("(")
+        expressionField = finalText
+
+    def on_closeParenthesisButton_clicked(self, button, data=None):
+        expressionField = builder.get_object("expressionField")
+        buffer = expressionField.get_buffer()
+        finalText = buffer.insert_at_cursor(")")
+        expressionField = finalText
+
+    def on_backButton_clicked(self, button, data=None):
+        expressionField = builder.get_object("expressionField")
+        buffer = expressionField.get_buffer()
+        end = buffer.get_end_iter()
+        finalText = buffer.backspace(end, False, True)
+        expressionField = finalText
+
     def on_equalsButton_clicked(self, button, data=None):
         expressionField = builder.get_object("expressionField")
         buffer = expressionField.get_buffer()
@@ -127,6 +146,11 @@ class Handlers:
                 result = buffer.insert_at_cursor("=" + calculation)
 
             except SyntaxError:
+                invalid_Expression_Dialog = builder.get_object(
+                    "invalid_Expression_Dialog")
+                invalid_Expression_Dialog.show()
+
+            except NameError:
                 invalid_Expression_Dialog = builder.get_object(
                     "invalid_Expression_Dialog")
                 invalid_Expression_Dialog.show()
