@@ -143,7 +143,7 @@ class Handlers:
                 expression = expression.replace('x', '*')
                 expression = expression.replace('÷', '/')
                 calculation = str(eval(expression))
-                result = buffer.insert_at_cursor("=" + calculation)
+                result = buffer.insert_at_cursor("=" + "\n" + calculation)
 
             except SyntaxError:
                 invalid_Expression_Dialog = builder.get_object(
