@@ -119,13 +119,12 @@ class Handlers:
         end = buffer.get_end_iter()
         expression = buffer.get_text(start, end, False)
 
-        operators = {"+": operator.add, "-": operator.sub, "x": operator.mul,
-                     "÷": operator.truediv, "%": operator.mod}
-
         if expression is not (""):
             try:
+                expression = expression.replace('x', '*')
+                expression = expression.replace('÷', '/')
                 calculation = str(eval(expression))
-                result = buffer.set_buffer(expression + "=" + calculation)
+                result = buffer.insert_at_cursor("=" + calculation)
 
             except SyntaxError:
                 invalid_Expression_Dialog = builder.get_object(
