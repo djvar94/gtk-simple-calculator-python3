@@ -142,6 +142,7 @@ class Handlers:
             try:
                 expression = expression.replace('x', '*')
                 expression = expression.replace('÷', '/')
+                expression = expression.replace('%', '/100')
                 calculation = str(eval(expression))
                 result = buffer.insert_at_cursor("=" + "\n" + calculation)
 
