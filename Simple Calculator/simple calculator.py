@@ -140,6 +140,38 @@ class Handlers:
 
         if expression is not (""):
             try:
+                def eval(expression):
+                    import re
+                    import math
+
+                    def add(v1, v2):
+                        return v1 + v2
+
+                    def sub(v1, v2):
+                        return v1 - v2
+
+                    def mul(v, f):
+                        return v * f
+
+                    def div(v, d):
+                        return v / d
+
+                    e = re.findall('([+-x*/÷])?\s?(\d+)(\s%|%)?', expression)
+                    r = None
+                    for v in e:
+                        op = {'*': mul, 'x': mul, '+': add, '/': div,
+                              '÷': div, '-': sub}.get(v[0], None)
+                        if op is not None and not v[2]:
+                            r = op(r, float(v[1]))
+
+                        elif op is not None and '%' in v[2]:
+                            r = mul(r, (float(v[1]) / 100))
+
+                        else:
+                            r = float(v[1])
+
+                    return r
+
                 expression = expression.replace('x', '*')
                 expression = expression.replace('÷', '/')
                 expression = expression.replace('%', '/100')
