@@ -146,12 +146,7 @@ class Handlers:
                 calculation = str(eval(expression))
                 result = buffer.insert_at_cursor("=" + "\n" + calculation)
 
-            except SyntaxError:
-                invalid_Expression_Dialog = builder.get_object(
-                    "invalid_Expression_Dialog")
-                invalid_Expression_Dialog.show()
-
-            except NameError:
+            except (SyntaxError, NameError):
                 invalid_Expression_Dialog = builder.get_object(
                     "invalid_Expression_Dialog")
                 invalid_Expression_Dialog.show()
