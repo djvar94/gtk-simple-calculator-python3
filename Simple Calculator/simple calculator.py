@@ -172,3 +172,5 @@ main_Window = builder.get_object("main_Window")
 main_Window.show()
 
 Gtk.main()
+
+# This is just a test to see if git is working in my VS Code
